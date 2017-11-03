@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-glogateway" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/glogateway"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/glogateway" destdir="${build.generated.dir}/jax-wsCache/glogateway" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/glogateway/wsdl/glogateway.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="file:/C:/Users/akin/Documents/NetBeansProjects/MNOBilling/web/WEB-INF/glogateway.wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/glogateway/wsdl/glogateway.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/glogateway"/>
+            <binding dir="${conf-dir}xml-resources/web-service-references/glogateway/bindings" includes="glogateway_handler.xml"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/glogateway">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.classes.dir}">
+            <fileset dir="${build.generated.dir}/jax-wsCache/glogateway">
+                <include name="**/*.xml"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-glogateway" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/example/contentcharge"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/glogateway"/>
+    </target>
+    <target name="wsimport-client-SendSmsService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/SendSmsService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/SendSmsService" destdir="${build.generated.dir}/jax-wsCache/SendSmsService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/SendSmsService/wsdl/localhost_8080/MNOGateway/SendSmsService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MNOGateway/SendSmsService?WSDL" xnocompile="true" xendorsed="true" package="sdp.sms.mtn.out">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/SendSmsService/wsdl/localhost_8080/MNOGateway/SendSmsService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/SendSmsService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/SendSmsService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-SendSmsService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/sdp/sms/mtn/out"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/SendSmsService"/>
+    </target>
+    <target name="wsimport-client-SmsNotificationService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/SmsNotificationService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/SmsNotificationService" destdir="${build.generated.dir}/jax-wsCache/SmsNotificationService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/SmsNotificationService/wsdl/localhost_8080/MNOGateway/SmsNotificationService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MNOGateway/SmsNotificationService?wsdl" xnocompile="true" xendorsed="true" package="sdp.sms.mtn.notify.out">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/SmsNotificationService/wsdl/localhost_8080/MNOGateway/SmsNotificationService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/SmsNotificationService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/SmsNotificationService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-SmsNotificationService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/sdp/sms/mtn/notify/out"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/SmsNotificationService"/>
+    </target>
+    <target name="wsimport-service-MTNDataSync" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/MTNDataSync"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/MTNDataSync" destdir="${build.generated.dir}/jax-wsCache/service/MTNDataSync" wsdl="${basedir}/${conf-dir}xml-resources/web-services/MTNDataSync/wsdl/sag_data_sync_interface_1_0Wrapper.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/MTNDataSync/wsdl/sag_data_sync_interface_1_0Wrapper.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/MTNDataSync"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/MTNDataSync">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/MTNDataSync">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/MTNDataSync/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-MTNDataSync" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/csapi/wsdl/parlayx/data/sync/v1_0/_interface"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/MTNDataSync"/>
+    </target>
+    <target name="wsimport-service-MTNSubscribe" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe" destdir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe" wsdl="${basedir}/${conf-dir}xml-resources/web-services/MTNSubscribe/wsdl/sag_subscribe_interface_1_0Wrapper.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/MTNSubscribe/wsdl/sag_subscribe_interface_1_0Wrapper.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/MTNSubscribe">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/MTNSubscribe/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-MTNSubscribe" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/csapi/wsdl/parlayx/subscribe/manage/v1_0/_interface"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/MTNSubscribe"/>
+    </target>
+    <target name="wsimport-service-MTNSMS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/MTNSMS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/MTNSMS" destdir="${build.generated.dir}/jax-wsCache/service/MTNSMS" wsdl="${basedir}/${conf-dir}xml-resources/web-services/MTNSMS/wsdl/parlayx_sms_send_interface_2_2Wrapper.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/MTNSMS/wsdl/parlayx_sms_send_interface_2_2Wrapper.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/MTNSMS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/MTNSMS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/MTNSMS">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/MTNSMS/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-MTNSMS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/csapi/wsdl/parlayx/sms/send/v2_2/_interface"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/MTNSMS"/>
+    </target>
+    <target name="wsimport-service-MTNSMSNotification" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification" destdir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification" wsdl="${basedir}/${conf-dir}xml-resources/web-services/MTNSMSNotification/wsdl/parlayx_sms_notification_interface_2_2Wrapper.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/MTNSMSNotification/wsdl/parlayx_sms_notification_interface_2_2Wrapper.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/MTNSMSNotification">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/MTNSMSNotification/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-MTNSMSNotification" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/csapi/wsdl/parlayx/sms/notification/v2_2/_interface"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/MTNSMSNotification"/>
+    </target>
+    <target name="wsimport-service-MTNReceiveSMS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS" destdir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS" wsdl="${basedir}/${conf-dir}xml-resources/web-services/MTNReceiveSMS/wsdl/parlayx_sms_receive_interface_2_2Wrapper.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/MTNReceiveSMS/wsdl/parlayx_sms_receive_interface_2_2Wrapper.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/MTNReceiveSMS">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/MTNReceiveSMS/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-MTNReceiveSMS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/csapi/wsdl/parlayx/sms/receive/v2_2/_interface"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/MTNReceiveSMS"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-glogateway, wsimport-client-SendSmsService, wsimport-client-SmsNotificationService"/>
+    <target name="wsimport-service-generate" depends="wsimport-service-MTNDataSync, wsimport-service-MTNSubscribe, wsimport-service-MTNSMS, wsimport-service-MTNSMSNotification, wsimport-service-MTNReceiveSMS"/>
+</project>

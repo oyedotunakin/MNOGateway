@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/akin/Documents/NetBeansProjects/MNOBillingGateway/web/WEB-INF/glogateway.wsdl" uri="wsdl/glogateway.wsdl"/>
+    <system systemId="file:/C:/Users/akin/Documents/NetBeansProjects/MNOBillingGateway/web/WEB-INF/UCAPSchema.xsd" uri="wsdl/UCAPSchema.xsd"/>
+    <system systemId="file:/C:/Users/akin/Documents/NetBeansProjects/MNOBilling/web/WEB-INF/glogateway.wsdl" uri="wsdl/glogateway.wsdl"/>
+    <system systemId="file:/C:/Users/akin/Documents/NetBeansProjects/MNOBilling/web/WEB-INF/UCAPSchema.xsd" uri="wsdl/UCAPSchema.xsd"/>
+    <system systemId="file:/C:/Users/User-PC/Documents/cellulant/Gokes%20doc/mtn%20sdp/SMS-ParlayX%202.1/(Part4%20SMS)/parlayx_sms_send_interface_2_2.wsdl" uri="wsdl/parlayx_sms_send_interface_2_2.wsdl"/>
+    <system systemId="file:/C:/Users/User-PC/Documents/cellulant/Gokes%20doc/mtn%20sdp/SMS-ParlayX%202.1/(Part4%20SMS)/parlayx_sms_types_2_2.xsd" uri="wsdl/parlayx_sms_types_2_2.xsd"/>
+    <system systemId="file:/C:/Users/User-PC/Documents/cellulant/Gokes%20doc/mtn%20sdp/SMS-ParlayX%202.1/(Part4%20SMS)/parlayx_common_types_2_1.xsd" uri="wsdl/parlayx_common_types_2_1.xsd"/>
+    <system systemId="file:/C:/Users/User-PC/Documents/cellulant/Gokes%20doc/mtn%20sdp/SMS-ParlayX%202.1/(Part4%20SMS)/parlayx_common_faults_2_0.wsdl" uri="wsdl/parlayx_common_faults_2_0.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SendSmsService?WSDL" uri="wsdl/localhost_8080/MNOGateway/SendSmsService.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SendSmsService?wsdl=2" uri="wsdl/localhost_8080/MNOGateway/SendSmsService.wsdl_2.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SendSmsService?xsd=2" uri="wsdl/localhost_8080/MNOGateway/SendSmsService.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/MNOGateway/SendSmsService?xsd=1" uri="wsdl/localhost_8080/MNOGateway/SendSmsService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MNOGateway/SendSmsService?wsdl=1" uri="wsdl/localhost_8080/MNOGateway/SendSmsService.wsdl_1.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SmsNotificationService?wsdl" uri="wsdl/localhost_8080/MNOGateway/SmsNotificationService.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SmsNotificationService?wsdl=1" uri="wsdl/localhost_8080/MNOGateway/SmsNotificationService.wsdl_1.wsdl"/>
+    <system systemId="http://localhost:8080/MNOGateway/SmsNotificationService?xsd=2" uri="wsdl/localhost_8080/MNOGateway/SmsNotificationService.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/MNOGateway/SmsNotificationService?xsd=1" uri="wsdl/localhost_8080/MNOGateway/SmsNotificationService.xsd_1.xsd"/>
+</catalog>

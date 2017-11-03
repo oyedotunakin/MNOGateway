@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:parlayx_sms_send="http://www.csapi.org/wsdl/parlayx/sms/send/v2_2/interface" xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:parlayx_sms_xsd="http://www.csapi.org/schema/parlayx/sms/v2_2" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_sms_send_local_xsd="http://www.csapi.org/schema/parlayx/sms/send/v2_2/local" name="parlayx_sms_send_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/sms/send/v2_2/interface">
+<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/sms/send/v2_2/interface" location="http://localhost:8080/MNOGateway/SendSmsService?wsdl=2"/>
+<wsdl:binding name="SendSmsBinding" type="parlayx_sms_send:SendSms">
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<wsdl:operation name="sendSms">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="sendSms_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+<wsdl:fault name="ServiceException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServiceException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="PolicyException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PolicyException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="sendSmsLogo">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="sendSmsLogo_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+<wsdl:fault name="ServiceException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServiceException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="PolicyException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PolicyException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="sendSmsRingtone">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="sendSmsRingtone_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+<wsdl:fault name="ServiceException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServiceException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="PolicyException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PolicyException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getSmsDeliveryStatus">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="getSmsDeliveryStatus_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+<wsdl:fault name="ServiceException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServiceException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="PolicyException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PolicyException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SendSmsService">
+<wsdl:port name="SendSmsPort" binding="parlayx_sms_send:SendSmsBinding">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://localhost:8080/MNOGateway/SendSmsService"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

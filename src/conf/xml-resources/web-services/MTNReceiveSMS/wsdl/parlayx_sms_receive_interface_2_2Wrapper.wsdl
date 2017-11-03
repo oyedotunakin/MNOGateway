@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:parlayx_sms_receive="http://www.csapi.org/wsdl/parlayx/sms/receive/v2_2/interface" xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:parlayx_sms_xsd="http://www.csapi.org/schema/parlayx/sms/v2_2" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_sms_receive_local_xsd="http://www.csapi.org/schema/parlayx/sms/receive/v2_2/local" name="parlayx_sms_receive_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/sms/receive/v2_2/interface">
+<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/sms/receive/v2_2/interface" location="parlayx_sms_receive_interface_2_2.wsdl"/>
+<wsdl:binding name="ReceiveSmsBinding" type="parlayx_sms_receive:ReceiveSms">
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<wsdl:operation name="getReceivedSms">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="getReceivedSms_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+<wsdl:fault name="ServiceException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServiceException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="PolicyException">
+<soap:fault xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PolicyException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ReceiveSmsService">
+<wsdl:port name="ReceiveSmsPort" binding="parlayx_sms_receive:ReceiveSmsBinding">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="REPLACE_WITH_ACTUAL_URL"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

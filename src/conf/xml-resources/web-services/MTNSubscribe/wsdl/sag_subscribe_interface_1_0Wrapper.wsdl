@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sag_subscribe_manage="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface" xmlns:sag_subscribe_manage_xsd="http://www.csapi.org/schema/parlayx/subscribe/v1_0" xmlns:sag_subscribe_manage_local_xsd="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local" name="sag_subscribe_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface">
+<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface" location="sag_subscribe_interface_1_0.wsdl"/>
+<wsdl:binding name="SubscribeManageBinding" type="sag_subscribe_manage:SubscribeManage">
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<wsdl:operation name="subscribeService">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="subscribeService_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="unSubscribeService">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="unSubscribeService_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="subscribeProduct">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="subscribeProduct_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="unSubscribeProduct">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="unSubscribeProduct_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SubscribeManageService">
+<wsdl:port name="SubscribeManagePort" binding="sag_subscribe_manage:SubscribeManageBinding">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="REPLACE_WITH_ACTUAL_URL"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

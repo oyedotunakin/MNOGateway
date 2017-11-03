@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified" targetNamespace="UCAPNS"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="TransactionHeaderType">
+        <xs:annotation>
+            <xs:documentation>Transaction header elements</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="TransactionID">
+                <xs:annotation>
+                    <xs:documentation>Unique transaction ID - Possible values [
+                        0x0000000000000000 – 0x7FFFFFFFFFFFFFFF ]</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Retry">
+                <xs:annotation>
+                    <xs:documentation>Retry indicator - Possible values (0x00,
+                        0x01)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ResponseCode" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Response code</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:maxInclusive value="65535" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="CommodityType">
+        <xs:annotation>
+            <xs:documentation>Commodity Information</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="ID">
+                <xs:annotation>
+                    <xs:documentation>Classification of the commodity; Possible
+                        values: [1 - SMS, 2 - GPRS, 3 - CONTENT, 4 - MMS, 5 - CSD]</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="4" />
+                        <xs:enumeration value="5" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubID" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Further classification of the
+                        commodity.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The textual description of the
+                        commodity</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="AmountType">
+        <xs:annotation>
+            <xs:documentation>Information about the amount</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="Sign">
+                <xs:annotation>
+                    <xs:documentation>False (0) means debit; True (1) means
+                        credit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" type="xs:unsignedInt">
+                <xs:annotation>
+                    <xs:documentation>Value may represent amount of money or
+                        commodity</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Exponent" type="xs:integer">
+                <xs:annotation>
+                    <xs:documentation>Final value = value * 10^exponent; Ex: 2.5 =
+                        25 000 * 10^-4</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="VolumeType">
+        <xs:annotation>
+            <xs:documentation>Volume Information</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element xmlns:q1="UCAPNS" name="Amount" type="q1:AmountType">
+                <xs:annotation>
+                    <xs:documentation>Amount information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Unit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="EN">The alphabetic currency codes
+                        ISO 4217 + custome defined types[ 10 000(Undefined), 10 001(Number of events), 10
+                        002(Octet), 10 003(Second), 10 004(Minute), 10 005(Hour), 10 006(Day) ]
+                        :</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="971" />
+                        <xs:enumeration value="978" />
+                        <xs:enumeration value="008" />
+                        <xs:enumeration value="012" />
+                        <xs:enumeration value="840" />
+                        <xs:enumeration value="973" />
+                        <xs:enumeration value="951" />
+                        <xs:enumeration value="032" />
+                        <xs:enumeration value="051" />
+                        <xs:enumeration value="533" />
+                        <xs:enumeration value="036" />
+                        <xs:enumeration value="944" />
+                        <xs:enumeration value="044" />
+                        <xs:enumeration value="048" />
+                        <xs:enumeration value="050" />
+                        <xs:enumeration value="052" />
+                        <xs:enumeration value="974" />
+                        <xs:enumeration value="084" />
+                        <xs:enumeration value="952" />
+                        <xs:enumeration value="060" />
+                        <xs:enumeration value="356" />
+                        <xs:enumeration value="064" />
+                        <xs:enumeration value="068" />
+                        <xs:enumeration value="984" />
+                        <xs:enumeration value="977" />
+                        <xs:enumeration value="072" />
+                        <xs:enumeration value="578" />
+                        <xs:enumeration value="986" />
+                        <xs:enumeration value="096" />
+                        <xs:enumeration value="975" />
+                        <xs:enumeration value="108" />
+                        <xs:enumeration value="116" />
+                        <xs:enumeration value="950" />
+                        <xs:enumeration value="124" />
+                        <xs:enumeration value="132" />
+                        <xs:enumeration value="136" />
+                        <xs:enumeration value="152" />
+                        <xs:enumeration value="990" />
+                        <xs:enumeration value="156" />
+                        <xs:enumeration value="170" />
+                        <xs:enumeration value="970" />
+                        <xs:enumeration value="174" />
+                        <xs:enumeration value="976" />
+                        <xs:enumeration value="554" />
+                        <xs:enumeration value="188" />
+                        <xs:enumeration value="191" />
+                        <xs:enumeration value="192" />
+                        <xs:enumeration value="931" />
+                        <xs:enumeration value="203" />
+                        <xs:enumeration value="208" />
+                        <xs:enumeration value="262" />
+                        <xs:enumeration value="214" />
+                        <xs:enumeration value="818" />
+                        <xs:enumeration value="222" />
+                        <xs:enumeration value="232" />
+                        <xs:enumeration value="233" />
+                        <xs:enumeration value="230" />
+                        <xs:enumeration value="238" />
+                        <xs:enumeration value="242" />
+                        <xs:enumeration value="953" />
+                        <xs:enumeration value="270" />
+                        <xs:enumeration value="981" />
+                        <xs:enumeration value="936" />
+                        <xs:enumeration value="292" />
+                        <xs:enumeration value="320" />
+                        <xs:enumeration value="826" />
+                        <xs:enumeration value="324" />
+                        <xs:enumeration value="328" />
+                        <xs:enumeration value="332" />
+                        <xs:enumeration value="340" />
+                        <xs:enumeration value="344" />
+                        <xs:enumeration value="348" />
+                        <xs:enumeration value="352" />
+                        <xs:enumeration value="360" />
+                        <xs:enumeration value="364" />
+                        <xs:enumeration value="368" />
+                        <xs:enumeration value="376" />
+                        <xs:enumeration value="388" />
+                        <xs:enumeration value="392" />
+                        <xs:enumeration value="400" />
+                        <xs:enumeration value="398" />
+                        <xs:enumeration value="404" />
+                        <xs:enumeration value="408" />
+                        <xs:enumeration value="410" />
+                        <xs:enumeration value="414" />
+                        <xs:enumeration value="417" />
+                        <xs:enumeration value="418" />
+                        <xs:enumeration value="428" />
+                        <xs:enumeration value="422" />
+                        <xs:enumeration value="710" />
+                        <xs:enumeration value="426" />
+                        <xs:enumeration value="430" />
+                        <xs:enumeration value="434" />
+                        <xs:enumeration value="756" />
+                        <xs:enumeration value="440" />
+                        <xs:enumeration value="446" />
+                        <xs:enumeration value="807" />
+                        <xs:enumeration value="969" />
+                        <xs:enumeration value="454" />
+                        <xs:enumeration value="458" />
+                        <xs:enumeration value="462" />
+                        <xs:enumeration value="478" />
+                        <xs:enumeration value="480" />
+                        <xs:enumeration value="484" />
+                        <xs:enumeration value="979" />
+                        <xs:enumeration value="498" />
+                        <xs:enumeration value="496" />
+                        <xs:enumeration value="504" />
+                        <xs:enumeration value="943" />
+                        <xs:enumeration value="104" />
+                        <xs:enumeration value="516" />
+                        <xs:enumeration value="524" />
+                        <xs:enumeration value="532" />
+                        <xs:enumeration value="558" />
+                        <xs:enumeration value="566" />
+                        <xs:enumeration value="512" />
+                        <xs:enumeration value="586" />
+                        <xs:enumeration value="590" />
+                        <xs:enumeration value="598" />
+                        <xs:enumeration value="600" />
+                        <xs:enumeration value="604" />
+                        <xs:enumeration value="608" />
+                        <xs:enumeration value="985" />
+                        <xs:enumeration value="634" />
+                        <xs:enumeration value="946" />
+                        <xs:enumeration value="643" />
+                        <xs:enumeration value="646" />
+                        <xs:enumeration value="654" />
+                        <xs:enumeration value="882" />
+                        <xs:enumeration value="678" />
+                        <xs:enumeration value="682" />
+                        <xs:enumeration value="941" />
+                        <xs:enumeration value="690" />
+                        <xs:enumeration value="694" />
+                        <xs:enumeration value="702" />
+                        <xs:enumeration value="090" />
+                        <xs:enumeration value="706" />
+                        <xs:enumeration value="144" />
+                        <xs:enumeration value="938" />
+                        <xs:enumeration value="968" />
+                        <xs:enumeration value="748" />
+                        <xs:enumeration value="752" />
+                        <xs:enumeration value="948" />
+                        <xs:enumeration value="947" />
+                        <xs:enumeration value="760" />
+                        <xs:enumeration value="901" />
+                        <xs:enumeration value="972" />
+                        <xs:enumeration value="834" />
+                        <xs:enumeration value="764" />
+                        <xs:enumeration value="776" />
+                        <xs:enumeration value="780" />
+                        <xs:enumeration value="788" />
+                        <xs:enumeration value="949" />
+                        <xs:enumeration value="934" />
+                        <xs:enumeration value="800" />
+                        <xs:enumeration value="980" />
+                        <xs:enumeration value="784" />
+                        <xs:enumeration value="998" />
+                        <xs:enumeration value="997" />
+                        <xs:enumeration value="858" />
+                        <xs:enumeration value="940" />
+                        <xs:enumeration value="860" />
+                        <xs:enumeration value="548" />
+                        <xs:enumeration value="937" />
+                        <xs:enumeration value="704" />
+                        <xs:enumeration value="886" />
+                        <xs:enumeration value="894" />
+                        <xs:enumeration value="932" />
+                        <xs:enumeration value="10000" />
+                        <xs:enumeration value="10001" />
+                        <xs:enumeration value="10002" />
+                        <xs:enumeration value="10003" />
+                        <xs:enumeration value="10004" />
+                        <xs:enumeration value="10005" />
+                        <xs:enumeration value="10006" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="CurrencyAmountType">
+        <xs:annotation>
+            <xs:documentation>Information about the currency</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="DebitIndicator">
+                <xs:annotation>
+                    <xs:documentation>0x01(True) if value is to be (was) debited,
+                        false otherwise</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CurrencyCode">
+                <xs:annotation>
+                    <xs:documentation>ISO currency code, e.g. "USD" (US Dollars),
+                        "FFR" (French Francs)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="3" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ScallingFactor">
+                <xs:annotation>
+                    <xs:documentation>Scaling factor for the amount value. This
+                        will generally be an integer power of ten used to scale this integer to the
+                        required accuracy. Example:
+                        - Scaling factor = 100
+                        - Amount = 450
+                        - Currency USD
+                        Total amount = amount / scaling factor = 450 / 100 = 4,5 USD</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer" />
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AmountValue">
+                <xs:annotation>
+                    <xs:documentation>This is the value of the transaction. This
+                        value is in the units of currency specified in the [Currency]. This will be
+                        divided by the value of [Scaling Factor] to give the decimal amount in major
+                        currency units.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1" />
+                        <xs:maxInclusive value="4294967295" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="APartyType">
+        <xs:annotation>
+            <xs:documentation>Information about the charged
+                subscriber</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="MSISDN">
+                <xs:annotation>
+                    <xs:documentation>Contains MSISDN of the charged
+                        subscriber.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="40" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="IMSI">
+                <xs:annotation>
+                    <xs:documentation>Contains IMSI of the charged
+                        subscriber</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="0" />
+                        <xs:maxLength value="15" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MSC" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>Contains positioning
+                        information</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="0" />
+                        <xs:maxLength value="15" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="TimeValueType">
+        <xs:annotation>
+            <xs:documentation>Information about the time of
+                event</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="Time" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:documentation>The difference, measured in seconds, between
+                        the current time and midnight, January 1, 1970 UTC.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TimeOffset">
+                <xs:annotation>
+                    <xs:documentation>It must be an element of the set of whole
+                        numbers [-24, 23]; The difference of local time to UTC time expressed in 30
+                        minutes units (i.e. 2 equals to one hour difference). It should already reflect
+                        daylight savings.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:enumeration value="-24" />
+                        <xs:enumeration value="-23" />
+                        <xs:enumeration value="-22" />
+                        <xs:enumeration value="-21" />
+                        <xs:enumeration value="-20" />
+                        <xs:enumeration value="-19" />
+                        <xs:enumeration value="-18" />
+                        <xs:enumeration value="-17" />
+                        <xs:enumeration value="-16" />
+                        <xs:enumeration value="-15" />
+                        <xs:enumeration value="-14" />
+                        <xs:enumeration value="-13" />
+                        <xs:enumeration value="-12" />
+                        <xs:enumeration value="-11" />
+                        <xs:enumeration value="-10" />
+                        <xs:enumeration value="-9" />
+                        <xs:enumeration value="-8" />
+                        <xs:enumeration value="-7" />
+                        <xs:enumeration value="-6" />
+                        <xs:enumeration value="-5" />
+                        <xs:enumeration value="-4" />
+                        <xs:enumeration value="-3" />
+                        <xs:enumeration value="-2" />
+                        <xs:enumeration value="-1" />
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="4" />
+                        <xs:enumeration value="5" />
+                        <xs:enumeration value="6" />
+                        <xs:enumeration value="7" />
+                        <xs:enumeration value="8" />
+                        <xs:enumeration value="9" />
+                        <xs:enumeration value="10" />
+                        <xs:enumeration value="11" />
+                        <xs:enumeration value="12" />
+                        <xs:enumeration value="13" />
+                        <xs:enumeration value="14" />
+                        <xs:enumeration value="15" />
+                        <xs:enumeration value="16" />
+                        <xs:enumeration value="17" />
+                        <xs:enumeration value="18" />
+                        <xs:enumeration value="19" />
+                        <xs:enumeration value="20" />
+                        <xs:enumeration value="21" />
+                        <xs:enumeration value="22" />
+                        <xs:enumeration value="23" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="ErrorType">
+        <xs:all>
+            <xs:element name="ErrorCode" type="xs:integer" />
+            <xs:element name="ErrorDescription" type="xs:string" />
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="RequestType">
+        <xs:annotation>
+            <xs:documentation>The ChargeRequest is sent from the Content Provider
+                to the billing system and contains all the necessary information required by the
+                BS to charge a subscriber.</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element xmlns:q1="UCAPNS" name="TransactionHeader"
+                        type="q1:TransactionHeaderType">
+                <xs:annotation>
+                    <xs:documentation>Transaction Header</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OperationCode">
+                <xs:annotation>
+                    <xs:documentation>Type of operation, Possible values: 0x00
+                        (Debit) and 0x01 (Credit)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="16" />
+                        <xs:enumeration value="32" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Rated">
+                <xs:annotation>
+                    <xs:documentation>Rating Flag; Speicifies if the content is
+                        rated or un-rated; Possible values: 0x00(Un-Rated) and 0x01
+                        (Rated)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:byte">
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MerchantName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Merchant information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element xmlns:q1="UCAPNS" name="Commodity"
+                        type="q1:CommodityType">
+                <xs:annotation>
+                    <xs:documentation>Commodity information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element xmlns:q1="UCAPNS" name="Volume" type="q1:VolumeType">
+                <xs:annotation>
+                    <xs:documentation>Information about the volume(value of the
+                        transaction).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element xmlns:q1="UCAPNS" name="TimeOfEvent"
+                        type="q1:TimeValueType">
+                <xs:annotation>
+                    <xs:documentation>Time of event</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TrafficID">
+                <xs:annotation>
+                    <xs:documentation>The information describing the methods by
+                        which the traffic is being sent [ UDP - 0x01, TCP - 0x02, FTP - 0x03, HTTP -
+                        0x04, WSP - 0x05, MMS - 0x06, WTLS - 0x07, SMTP - 0x08, POP3 - 0x09, IMAP - 0x0A,
+                        RTP - 0x0B, RTSP - 0x0C, SMS - 0x0D]</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="2" />
+                        <xs:enumeration value="3" />
+                        <xs:enumeration value="4" />
+                        <xs:enumeration value="5" />
+                        <xs:enumeration value="6" />
+                        <xs:enumeration value="7" />
+                        <xs:enumeration value="8" />
+                        <xs:enumeration value="9" />
+                        <xs:enumeration value="10" />
+                        <xs:enumeration value="11" />
+                        <xs:enumeration value="12" />
+                        <xs:enumeration value="13" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ValidityInterval">
+                <xs:annotation>
+                    <xs:documentation>It contains the longest interval in hours,
+                        between "debit operation" and a possible "credit"(undo credit adjustment)
+                        request.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1" />
+                        <xs:maxInclusive value="65535" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element xmlns:q1="UCAPNS" name="AParty" type="q1:APartyType">
+                <xs:annotation>
+                    <xs:documentation>Information about the charged
+                        subscriber</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="URL">
+                <xs:annotation>
+                    <xs:documentation>URL of the site visited by a subscriber in
+                        their current GPRS session.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                        <xs:minLength value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Domain">
+                <xs:annotation>
+                    <xs:documentation>Domain of the site visited by a subscriber
+                        in their current GPRS session</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                        <xs:minLength value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ContentID">
+                <xs:annotation>
+                    <xs:documentation>The information describing the content type
+                        of the traffic[text/html - 1, application/pdf - 2]</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="0" />
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="ResponseType">
+        <xs:annotation>
+            <xs:documentation>The ChargeResponse is sent to the content provider
+                as a response to the "Charge-Request" message. The value of responsecode must be
+                valid status code.</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element xmlns:q1="UCAPNS" name="TransactionHeader"
+                        type="q1:TransactionHeaderType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Transaction header
+                        elements</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element xmlns:q1="UCAPNS" name="CurrencyAmount"
+                        type="q1:CurrencyAmountType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Information about the
+                        amount</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:element xmlns:q1="UCAPNS" name="ChargeRequest" type="q1:RequestType">
+        <xs:annotation>
+            <xs:documentation>The ChargeRequest is sent from the content provider
+                to the billing system.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element xmlns:q1="UCAPNS" name="ChargeResponse" type="q1:ResponseType">
+        <xs:annotation>
+            <xs:documentation>The Charge Response is sent to the content provider
+                as a response to the "Charge-Request" message. The value of responsecode must be
+                valid status code.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element xmlns:q1="UCAPNS" name="Fault" type="q1:ErrorType" ></xs:element>
+</xs:schema>

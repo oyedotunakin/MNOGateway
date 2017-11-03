@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><!-- January 5, 2006 --><wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" name="common_faults" targetNamespace="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults">
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v2_1" schemaLocation="http://localhost:8080/MNOGateway/SendSmsService?xsd=1"/>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="ServiceException">
+      <wsdl:part name="ServiceException" element="parlayx_common_xsd:ServiceException"/>
+   </wsdl:message>
+
+   <wsdl:message name="PolicyException">
+      <wsdl:part name="PolicyException" element="parlayx_common_xsd:PolicyException"/>
+   </wsdl:message>
+</wsdl:definitions>

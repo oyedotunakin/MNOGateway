@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Project: XML SOAP Filter, Version: 0.1 -->
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:tns="http://example.com/ContentCharge.wsdl"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:SOAPENV="
+http://schemas.xmlsoap.org/soap/envelope/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:SOAPENC="
+http://schemas.xmlsoap.org/soap/encoding/" name="ContentCharge"
+             targetNamespace="http://example.com/ContentCharge.wsdl"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xs:schema xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+           xmlns:tns="http://schemas.xmlsoap.org/wsdl/"
+           xmlns="http://www.w3.org/2001/XMLSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/ContentCharge.wsdl">
+            <import schemaLocation="UCAPSchema.xsd" namespace="UCAPNS" />
+            <element name="InputType">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q1="UCAPNS" name="input"
+         type="q1:RequestType" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="OutputType">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q1="UCAPNS" name="output"
+         type="q1:ResponseType" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ErrorType">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q1="UCAPNS" name="error"
+         type="q1:ErrorType" />
+                    </sequence>
+                </complexType>
+            </element>
+        </xs:schema>
+    </types>
+    <message name="ContentChargeRequest">
+        <part name="Request" element="tns:InputType" />
+    </message>
+    <message name="ContentChargeResponse">
+        <part name="Response" element="tns:OutputType" />
+    </message>
+    <message name="ContentChargeFault">
+        <part name="Fault" element="tns:ErrorType" />
+    </message>
+    <portType name="ContentChargePortType">
+        <operation name="ContentCharge">
+            <input message="tns:ContentChargeRequest" />
+            <output message="tns:ContentChargeResponse" />
+            <fault name="ContentChargeFault" message="tns:ContentChargeFault" />
+        </operation>
+    </portType>
+    <binding name="ContentCharge" type="tns:ContentChargePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+              style="document"/>
+        <operation name="ContentCharge">
+            <soap:operation soapAction="ContentCharge" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="ContentChargeFault">
+                <soap:fault use="literal" name="ContentChargeFault" />
+            </fault>
+        </operation>
+    </binding>
+    <service name="ContentCharge">
+        <port name="ContentCharge" binding="tns:ContentCharge">
+            <soap:address location="http://localhost:8080" />
+        </port>
+    </service>
+</definitions>

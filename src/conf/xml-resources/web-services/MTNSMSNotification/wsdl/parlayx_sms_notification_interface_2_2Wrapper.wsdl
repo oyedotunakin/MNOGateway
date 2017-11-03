@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:parlayx_sms_notification="http://www.csapi.org/wsdl/parlayx/sms/notification/v2_2/interface" xmlns:parlayx_sms_xsd="http://www.csapi.org/schema/parlayx/sms/v2_2" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_sms_notification_local_xsd="http://www.csapi.org/schema/parlayx/sms/notification/v2_2/local" name="parlayx_sms_notification_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/sms/notification/v2_2/interface">
+<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/sms/notification/v2_2/interface" location="parlayx_sms_notification_interface_2_2.wsdl"/>
+<wsdl:binding name="SmsNotificationBinding" type="parlayx_sms_notification:SmsNotification">
+<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<wsdl:operation name="notifySmsReception">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="notifySmsReception_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="notifySmsDeliveryReceipt">
+<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="notifySmsDeliveryReceipt_action"/>
+<wsdl:input>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SmsNotificationService">
+<wsdl:port name="SmsNotificationPort" binding="parlayx_sms_notification:SmsNotificationBinding">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="REPLACE_WITH_ACTUAL_URL"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

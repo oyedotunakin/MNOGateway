@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><!-- May 30, 2006 --><wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:parlayx_sms_send="http://www.csapi.org/wsdl/parlayx/sms/send/v2_2/interface" xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:parlayx_sms_xsd="http://www.csapi.org/schema/parlayx/sms/v2_2" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_sms_send_local_xsd="http://www.csapi.org/schema/parlayx/sms/send/v2_2/local" name="parlayx_sms_send_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/sms/send/v2_2/interface">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" location="http://localhost:8080/MNOGateway/SendSmsService?wsdl=1"/>
+
+   <wsdl:types>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.csapi.org/schema/parlayx/sms/send/v2_2/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/sms/v2_2" schemaLocation="http://localhost:8080/MNOGateway/SendSmsService?xsd=2"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v2_1" schemaLocation="http://localhost:8080/MNOGateway/SendSmsService?xsd=1"/>
+
+         <xsd:element name="sendSms" type="parlayx_sms_send_local_xsd:sendSms"/>
+         <xsd:complexType name="sendSms">
+            <xsd:sequence>
+               <xsd:element name="addresses" type="xsd:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+               <xsd:element name="senderName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="charging" type="parlayx_common_xsd:ChargingInformation" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="message" type="xsd:string"/>
+               <xsd:element name="receiptRequest" type="parlayx_common_xsd:SimpleReference" minOccurs="0" maxOccurs="1"/>
+	       <xsd:element name="encode" type="xsd:string" minOccurs="0" maxOccurs="1"/> 
+               <xsd:element name="sourceport" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="destinationport" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="esm_class" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="data_coding" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="sendSmsResponse" type="parlayx_sms_send_local_xsd:sendSmsResponse"/>
+         <xsd:complexType name="sendSmsResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="sendSmsLogo" type="parlayx_sms_send_local_xsd:sendSmsLogo"/>
+         <xsd:complexType name="sendSmsLogo">
+            <xsd:sequence>
+               <xsd:element name="addresses" type="xsd:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+               <xsd:element name="senderName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="charging" type="parlayx_common_xsd:ChargingInformation" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="image" type="xsd:base64Binary"/>
+               <xsd:element name="smsFormat" type="parlayx_sms_xsd:SmsFormat"/>
+               <xsd:element name="receiptRequest" type="parlayx_common_xsd:SimpleReference" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="sendSmsLogoResponse" type="parlayx_sms_send_local_xsd:sendSmsLogoResponse"/>
+         <xsd:complexType name="sendSmsLogoResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="sendSmsRingtone" type="parlayx_sms_send_local_xsd:sendSmsRingtone"/>
+         <xsd:complexType name="sendSmsRingtone">
+            <xsd:sequence>
+               <xsd:element name="addresses" type="xsd:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+               <xsd:element name="senderName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="charging" type="parlayx_common_xsd:ChargingInformation" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="ringtone" type="xsd:string"/>
+               <xsd:element name="smsFormat" type="parlayx_sms_xsd:SmsFormat"/>
+               <xsd:element name="receiptRequest" type="parlayx_common_xsd:SimpleReference" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="sendSmsRingtoneResponse" type="parlayx_sms_send_local_xsd:sendSmsRingtoneResponse"/>
+         <xsd:complexType name="sendSmsRingtoneResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="getSmsDeliveryStatus" type="parlayx_sms_send_local_xsd:getSmsDeliveryStatus"/>
+         <xsd:complexType name="getSmsDeliveryStatus">
+            <xsd:sequence>
+               <xsd:element name="requestIdentifier" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="getSmsDeliveryStatusResponse" type="parlayx_sms_send_local_xsd:getSmsDeliveryStatusResponse"/>
+         <xsd:complexType name="getSmsDeliveryStatusResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="parlayx_sms_xsd:DeliveryInformation" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="SendSms_sendSmsRequest">
+      <wsdl:part name="parameters" element="parlayx_sms_send_local_xsd:sendSms"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_sendSmsResponse">
+      <wsdl:part name="result" element="parlayx_sms_send_local_xsd:sendSmsResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_sendSmsLogoRequest">
+      <wsdl:part name="parameters" element="parlayx_sms_send_local_xsd:sendSmsLogo"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_sendSmsLogoResponse">
+      <wsdl:part name="result" element="parlayx_sms_send_local_xsd:sendSmsLogoResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_sendSmsRingtoneRequest">
+      <wsdl:part name="parameters" element="parlayx_sms_send_local_xsd:sendSmsRingtone"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_sendSmsRingtoneResponse">
+      <wsdl:part name="result" element="parlayx_sms_send_local_xsd:sendSmsRingtoneResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_getSmsDeliveryStatusRequest">
+      <wsdl:part name="parameters" element="parlayx_sms_send_local_xsd:getSmsDeliveryStatus"/>
+   </wsdl:message>
+
+   <wsdl:message name="SendSms_getSmsDeliveryStatusResponse">
+      <wsdl:part name="result" element="parlayx_sms_send_local_xsd:getSmsDeliveryStatusResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="SendSms">
+      <wsdl:operation name="sendSms">
+         <wsdl:input message="parlayx_sms_send:SendSms_sendSmsRequest"/>
+         <wsdl:output message="parlayx_sms_send:SendSms_sendSmsResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="sendSmsLogo">
+         <wsdl:input message="parlayx_sms_send:SendSms_sendSmsLogoRequest"/>
+         <wsdl:output message="parlayx_sms_send:SendSms_sendSmsLogoResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="sendSmsRingtone">
+         <wsdl:input message="parlayx_sms_send:SendSms_sendSmsRingtoneRequest"/>
+         <wsdl:output message="parlayx_sms_send:SendSms_sendSmsRingtoneResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="getSmsDeliveryStatus">
+         <wsdl:input message="parlayx_sms_send:SendSms_getSmsDeliveryStatusRequest"/>
+         <wsdl:output message="parlayx_sms_send:SendSms_getSmsDeliveryStatusResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

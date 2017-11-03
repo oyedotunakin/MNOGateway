@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+  
+    <loc:subscribeProductRequest>
+        <loc:subscribeProductReq>
+            <userID>
+                <ID>8612312312123</ID>
+                <type>0</type>
+            </userID>
+            <subInfo>
+                <productID>12345678</productID>
+                <operCode>zh</operCode>
+                <isAutoExtend>0</isAutoExtend>
+                <channelID>2</channelID>
+            </subInfo>
+        </loc:subscribeProductReq>
+    </loc:subscribeProductRequest>  
+</root>
